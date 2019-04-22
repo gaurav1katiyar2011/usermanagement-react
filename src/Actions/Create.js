@@ -31,3 +31,38 @@ export const addUser = (data) => async (dispatch, getState, api) => {
         payload: res.data
     });
 };
+
+
+// Add new client action
+export const ADD_CLIENT = 'ADD_CLIENT';
+export const addClient = (data) => async (dispatch, getState, api) => {
+    const res = await api.post('/user', data)
+        .then(function (res) {
+            return res;
+        })
+        .catch(function (err) {
+            return err.response;
+        });
+
+    dispatch({
+        type: ADD_CLIENT,
+        payload: res.data
+    });
+};
+
+
+export const ADD_BILL = 'ADD_BILL';
+export const addBill = (data) => async (dispatch, getState, api) => {
+    const res = await api.post('/user', data)
+        .then(function (res) {
+            return res;
+        })
+        .catch(function (err) {
+            return err.response;
+        });
+
+    dispatch({
+        type: ADD_BILL,
+        payload: res.data
+    });
+};

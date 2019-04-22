@@ -26,6 +26,18 @@ class Left extends Component{
                                 Groups
                             </Link>
                         </li>
+                        <li>
+                            <Link to="/clients">
+                                <i className="fa fa-users"></i>
+                                 Customers Info
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/bills">
+                            <i className="fa fa-users"></i>
+                                 Bills Info
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </aside>

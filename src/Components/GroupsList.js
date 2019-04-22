@@ -43,7 +43,7 @@ class GroupsList extends Component{
                 <tr key={group.id}>
                     <td>
                         {group.name}
-                        {this.state.updatedid === group.id &&
+                        {this.state.updatedGrpId === group.id &&
                         <form onSubmit={this.submitUpdate}>
                             <div className="input-group">
                                 <input 
@@ -65,12 +65,13 @@ class GroupsList extends Component{
                         {this.state.updatedGrpId === group.id ? (
                         <button className="btn btn-primary" type="button" onClick={()=> this.handleUpdateBox("", "")}><i className="fa fa-times"></i></button>
                         ):(
-                        <button className="btn btn-primary" type="button" onClick={()=> this.handleUpdateBox(group.id, group.name)}><i className="fa fa-edit"></i></button>
+                        <button className="btn btn-primary" type="button" onClick={()=> this.handleUpdateBox(group.id, group.name)}>
+                            <i className="fa fa-edit"></i>
+                        </button>
                         )}
-                        <button 
-                        className="btn btn-danger" 
-                        type="button"
-                        onClick={() => { if (window.confirm('Are you sure to delete this group?')) this.handleDelete(group.id) } }><i className="fa fa-trash"></i></button>
+                        <button className="btn btn-danger" type="button"  onClick={() => { if (window.confirm('Are you sure to delete this group?')) this.handleDelete(group.id) } }>
+                        <i className="fa fa-trash"></i>
+                        </button>
                         <Link to={"/group/" + group.id}>
                             <button className="btn btn-success" type="button"><i className="fa fa-info"></i></button>
                         </Link>

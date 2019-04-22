@@ -85,8 +85,6 @@ export const fetchGroupUsers = (id) => async (dispatch, getState, api) => {
     });
 };
 
-
-
 //Fetch all groups
 export const FETCH_GROUPS = 'FETCH_GROUPS';
 export const fetchGroups = () => async (dispatch, getState, api) => {
@@ -117,6 +115,55 @@ export const searchGroup = (term) => async (dispatch, getState, api) => {
 
     dispatch({
         type: SEARCH_GROUP,
+        payload: res.data
+    });
+};
+
+// Get all client list 
+export const FETCH_CLIENTS = 'FETCH_CLIENTS';
+export const fetchClients = (id) => async (dispatch, getState, api) => {
+    const res = await api.get('/user' + id, null)
+        .then(function (res) {
+            return res;
+        })
+        .catch(function (err) {
+            return err.response;
+        });
+
+    dispatch({
+        type: FETCH_CLIENTS,
+        payload: res.data
+    });
+};
+// Get all client list 
+export const MORE_CLIENTS = 'MORE_CLIENTS';
+export const moreClients = (id) => async (dispatch, getState, api) => {
+    const res = await api.get('/user' + id, null)
+        .then(function (res) {
+            return res;
+        })
+        .catch(function (err) {
+            return err.response;
+        });
+
+    dispatch({
+        type: MORE_CLIENTS,
+        payload: res.data
+    });
+};
+//Search Group
+export const SEARCH_CLIENT = 'SEARCH_CLIENT';
+export const searchClient = (term) => async (dispatch, getState, api) => {
+    const res = await api.get('group/search/' + term, null)
+        .then(function (res) {
+            return res;
+        })
+        .catch(function (err) {
+            return err.response;
+        });
+
+    dispatch({
+        type: SEARCH_CLIENT,
         payload: res.data
     });
 };

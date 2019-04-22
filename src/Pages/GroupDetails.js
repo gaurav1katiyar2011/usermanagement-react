@@ -75,7 +75,7 @@ class GroupDetails extends Component{
                             <div className="col-full">
                                 <div className="card">
                                     <div className="card-header">
-                                        <i className="fa fa-align-justify"></i> {group.Name} - Users List
+                                        <i className="fa fa-align-justify"></i> {group[0].name} - Users List
                                     </div>
                                     <div className="card-body">
                                         <div className="form-group wrap">

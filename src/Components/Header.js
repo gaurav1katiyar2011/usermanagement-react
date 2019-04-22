@@ -14,7 +14,7 @@ class Header extends Component{
         return(
             <header>
                 <div className="brand-w-button">
-                    <img className="brand" alt="logotype" src="/images/logo.png" />
+                    <img className="brand" alt="logotype" src="/images/logo1.png" />
                     <i className="fa fa-bars" onClick={this.handleBar}></i>
                 </div>
             </header>

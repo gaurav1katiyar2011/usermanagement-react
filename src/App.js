@@ -12,6 +12,7 @@ import Users from './Pages/Users';
 import Groups from './Pages/Groups';
 import GroupDetails from './Pages/GroupDetails';
 import NotFoundPage from './Pages/NotFound';
+import Clients  from './Pages/Clients';
 
 class App extends Component {
   render() {
@@ -25,6 +26,8 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/users" component={Users} />
+                        <Route exact path="/clients" component={Clients} />
+                        <Route exact path="/bills" component={Users} />
                         <Route exact path="/groups" component={Groups} />
                         <Route exact path="/group/:groupid" component={GroupDetails} />
                         <Route component={NotFoundPage} />

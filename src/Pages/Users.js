@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchUsers, moreUsers, fetchGroups, searchUser} from '../Actions/List';
+import {fetchUsers, moreUsers, fetchGroups, searchUser,fetchClients} from '../Actions/List';
 import {handleModal} from "../Actions/Global";
 
 import UserModal from '../Components/UserModal';
@@ -52,6 +52,7 @@ class Users extends Component {
     componentDidMount(){
         this.props.fetchUsers(this.state.skip , this.state.perPage);
         this.props.fetchGroups();
+        this.props.fetchClients();
         window.scrollTo(0, 0);
     }
     static getDerivedStateFromProps(props, state) {
@@ -138,4 +139,4 @@ function mapStateToProps(globalState) {
     };
 }
 
-export default connect(mapStateToProps, {fetchUsers, moreUsers, fetchGroups, searchUser, handleModal})(Users);
+export default connect(mapStateToProps, {fetchUsers, moreUsers, fetchGroups, searchUser, fetchClients,handleModal})(Users);

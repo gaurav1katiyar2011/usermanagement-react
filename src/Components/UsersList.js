@@ -13,12 +13,15 @@ class UsersList extends Component{
     }
     renderUsers(users){
         return users.map((user) => {
+            console.log(user)
             return (
-                <tr key={user.username}>
+                <tr key={user.user_id}>
+                    <td>{user.user_id}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.password}</td>
                     <td>{user.group.name}</td>
+                    <td>{user.customer===null?'':user.customer.customer_name}</td>
                     <td className="md-visible">{moment(user.registered).format('DD.MM.YYYY - hh:mm (Z)')}</td>
                     <td>
                         <button className="btn btn-primary" onClick={()=> this.editUser(user)}><i className="fa fa-edit"></i></button>
@@ -35,10 +38,12 @@ class UsersList extends Component{
             <table className="table table-responsive-lg">
                 <thead>
                     <tr>
+                        <th>User Id</th>
                         <th>User Name</th>
                         <th>Email</th>
                         <th>Password</th>
                         <th>Group</th>
+                        <th>Customer</th>
                         <th className="md-visible">Registered</th>
                         <th>Action</th>
                     </tr>

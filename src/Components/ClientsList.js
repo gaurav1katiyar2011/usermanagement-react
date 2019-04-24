@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import {deleteUser} from '../Actions/Update';
-import {handleModal} from "../Actions/Global";
+import {deleteClient} from '../Actions/Update';
+import {handleCustomerModal} from "../Actions/Global";
 
 class ClientsList extends Component{
-    editUser(user){
-        this.props.handleModal(user);
+    editClient(client){
+        console.log(client)
+        this.props.handleCustomerModal(client);
     }
-    handleDelete(userid){
-        this.props.deleteUser(userid);
+    handleDelete(clientId){
+        this.props.deleteClient(clientId);
     }
-    renderUsers(users){
-        return users.map((user) => {
+    renderUsers(clients){
+        return clients.map((client) => {
             return (
-                <tr key={user.username}>
-                    <td>{user.username}</td>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                    <td className="md-visible">{moment(user.registered).format('DD.MM.YYYY - hh:mm (Z)')}</td>
+                <tr key={client.customer_id}>
+                    <td>{client.customer_id}</td>
+                    <td>{client.customer_name}</td>
+                    <td>{client.status}</td>
+                    <td className="md-visible">{moment(client.date_added).format('DD.MM.YYYY - hh:mm (Z)')}</td>
                     <td>
-                        <button className="btn btn-primary" onClick={()=> this.editUser(user)}><i className="fa fa-edit"></i></button>
-                        <button 
-                        className="btn btn-danger"
-                        onClick={() => { if (window.confirm('Are you sure to delete this user?')) this.handleDelete(user.user_id) } }><i className="fa fa-trash"></i></button>
+                        <button className="btn btn-primary" onClick={()=> this.editClient(client)}><i className="fa fa-edit"></i></button>
+                        <button className="btn btn-danger" 
+                        onClick={() => { 
+                            if (window.confirm('Are you sure to delete this customer?')) this.handleDelete(client.customer_id) } }>
+                            <i className="fa fa-trash"></i></button>
                     </td>
                 </tr>
             );
@@ -42,7 +44,7 @@ class ClientsList extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                {this.renderUsers(this.props.users)}
+                {this.renderUsers(this.props.clients)}
                 </tbody>
             </table>
         )
@@ -55,4 +57,4 @@ function mapStateToProps(globalState) {
     };
 }
 
-export default connect(mapStateToProps, { deleteUser, handleModal })(ClientsList);
+export default connect(mapStateToProps, { deleteClient, handleCustomerModal })(ClientsList);

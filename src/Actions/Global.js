@@ -16,6 +16,16 @@ export const handleModal = (value) => async (dispatch) => {
     });
 };
 
+//open/close modal
+export const HANDLE_CUSTOMER_MODAL = 'CUSTOMER_HANDLE_MODAL';
+export const handleCustomerModal = (value) => async (dispatch) => {
+    dispatch({
+        type: HANDLE_CUSTOMER_MODAL,
+        payload: value
+    });
+};
+
+
 // Get content stats
 export const CONTENT_STATS = 'CONTENT_STATS';
 export const contentStats = () => async (dispatch, getState, api) => {

@@ -19,7 +19,7 @@ export const fetchUsers = (skip, limit) => async (dispatch, getState, api) => {
     });
 };
 
-//Fetcj more users
+//Fetch more users
 export const MORE_USERS = 'MORE_USERS';
 export const moreUsers = (skip, limit) => async (dispatch, getState, api) => {
     const usersData = {
@@ -118,18 +118,16 @@ export const searchGroup = (term) => async (dispatch, getState, api) => {
         payload: res.data
     });
 };
-
 // Get all client list 
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
-export const fetchClients = (id) => async (dispatch, getState, api) => {
-    const res = await api.get('/user' + id, null)
+export const fetchClients = (skip, limit) => async (dispatch, getState, api) => {
+    const res = await api.get('/customer')
         .then(function (res) {
             return res;
         })
         .catch(function (err) {
             return err.response;
         });
-
     dispatch({
         type: FETCH_CLIENTS,
         payload: res.data
@@ -154,7 +152,7 @@ export const moreClients = (id) => async (dispatch, getState, api) => {
 //Search Group
 export const SEARCH_CLIENT = 'SEARCH_CLIENT';
 export const searchClient = (term) => async (dispatch, getState, api) => {
-    const res = await api.get('group/search/' + term, null)
+    const res = await api.get('/customer/search/' + term, null)
         .then(function (res) {
             return res;
         })

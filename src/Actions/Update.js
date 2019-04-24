@@ -74,11 +74,9 @@ export const updateUser = (id, ...data) => async (dispatch, getState, api) => {
 
 //Edit client action
 export const UPDATE_CLIENT = 'UPDATE_CLIENT';
-export const updateClient = (name, id) => async (dispatch, getState, api) => {
-    const data = {
-        name
-    }
-    const res = await api.put('/group/' + id, data)
+export const updateClient = (id, data) => async (dispatch, getState, api) => {
+    
+    const res = await api.put('/customer/' + id, data)
         .then(function (res) {
             return res;
         })
@@ -94,8 +92,8 @@ export const updateClient = (name, id) => async (dispatch, getState, api) => {
 
 // delete client action
 export const DELETE_CLIENT = 'DELETE_CLIENT';
-export const deleteClient = (id, ...data) => async (dispatch, getState, api) => {
-    const res = await api.put('/user/' + id, data[0])
+export const deleteClient = (id) => async (dispatch, getState, api) => {
+    const res = await api.delete('/customer/' + id)
         .then(function (res) {
             return res;
         })

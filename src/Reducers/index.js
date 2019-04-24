@@ -14,6 +14,7 @@ import leftbar from './LeftBar';
 import home from './Home';
 
 export default combineReducers({
+    
     users,
     userupdates,
     usermodal,

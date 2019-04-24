@@ -28,14 +28,20 @@ class Left extends Component{
                         </li>
                         <li>
                             <Link to="/clients">
-                                <i className="fa fa-users"></i>
+                            <i class="far fa-address-book"></i>
                                  Customers Info
                             </Link>
                         </li>
                         <li>
                             <Link to="/bills">
-                            <i className="fa fa-users"></i>
+                            <i class="far fa-money-bill-alt"></i>
                                  Bills Info
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/description">
+                            <i className="fas fa-info"></i>
+                                 Description
                             </Link>
                         </li>
                     </ul>

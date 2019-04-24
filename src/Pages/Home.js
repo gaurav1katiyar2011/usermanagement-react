@@ -32,6 +32,17 @@ class Home extends Component{
                             </div>
                         </div>
                     </div>
+                    <div className="wrap">
+                        <div className="col-half sm">
+                            <div className="card widget">
+                                <div className="card-body">
+                                    <i className="far fa-address-book bg-primary"></i>
+                                    <div className="number-text text-primary">{this.props.home.customers}</div>
+                                    <div className="caption">Customers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }else{

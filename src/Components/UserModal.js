@@ -17,6 +17,7 @@ class UserModal extends Component{
             email: "",
             group: "",
             password:"",
+            customer:"",
             type: "edit",
             userupdates: props.userupdates
         }
@@ -43,7 +44,7 @@ class UserModal extends Component{
     }
     handleSubmit(e) {
         e.preventDefault();
-        const { username, email, group,password,userId } = this.state;
+        const { username, email, group,password,userId,customer } = this.state;
 
         if(!username){
             this.setState({msgContent: 'Please enter User Name', msgType: 'alert error'})
@@ -57,9 +58,9 @@ class UserModal extends Component{
             this.setState({loading: true}, function(){
                 if(this.state.type === "add"){
                     console.log({userId:userId,username, email, password,groupId:group})
-                    this.props.addUser({userId:userId,username, email, password,groupId:group});
+                    this.props.addUser({userId:userId,username, email, password,groupId:group,customerId:customer});
                 }else{
-                    this.props.updateUser(this.state.usermodal.user_id, {username, email, groupId:group,password});
+                    this.props.updateUser(this.state.usermodal.user_id, {username, email, groupId:group,password,customerId:customer});
                 }
             })
         }
@@ -78,6 +79,7 @@ class UserModal extends Component{
                 email: props.usermodal.email,
                 group: props.usermodal.group.id,
                 password: props.usermodal.password,
+                customer: props.usermodal.customer,
                 type: props.usermodal.type
             }
         }else if(!props.usermodal){
@@ -98,6 +100,7 @@ class UserModal extends Component{
                     email: "",
                     group: "",
                     password:"",
+                    customer:"",
                     type: ""
                 }
             }else{
@@ -114,6 +117,7 @@ class UserModal extends Component{
     }
     render(){
         const groups = this.props.groups;
+        const customers = this.props.customers;
         return(
             <div className={this.state.usermodal ? 'modal' : 'modal closed'}>
                 <div className="modal-box" ref={this.setModalRef}>
@@ -205,6 +209,24 @@ class UserModal extends Component{
                                         <div className="col-full">
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
+                                                    <span className="input-group-text"><i className="fa fa-user"></i></span>
+                                                </div>
+                                                <select onChange={this.handleInput} 
+                                                name="customer" 
+                                                value={this.state.customer}
+                                                className="form-control form-control-lg">
+                                                    <option value="">Select Customer</option>
+                                                    {customers.map((customer)=>
+                                                    <option value={customer.customer_id} key={customer.customer_id}>{customer.customer_name}</option>
+                                                    )}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="form-group wrap">
+                                        <div className="col-full">
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
                                                     <span className="input-group-text"><i className="fa fa-users"></i></span>
                                                 </div>
                                                 <select onChange={this.handleInput} 
@@ -242,6 +264,7 @@ const mapStateToProps = (globalState) => {
     return {
         usermodal: globalState.usermodal,
         groups: globalState.groups,
+        customers: globalState.clients,
         userupdates: globalState.userupdates
     };
 };

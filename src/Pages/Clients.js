@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchUsers, moreUsers, fetchGroups, searchUser} from '../Actions/List';
-import {handleModal} from "../Actions/Global";
-import UserModal from '../Components/UserModal';
+import {fetchClients, moreClients, searchClient} from '../Actions/List';
+import {handleCustomerModal} from "../Actions/Global";
 import ClientsList from '../Components/ClientsList';
+import ClientModal from '../Components/ClientModal';
 
 class Clients extends Component {
     constructor(props){
@@ -16,59 +16,56 @@ class Clients extends Component {
             msgContent: null,
             msgType: null,
             searchterm: "",
-            userupdates: props.userupdates
+            clientupdates: props.clientupdates
         };
         this.loadMore = this.loadMore.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-        this.addUser = this.addUser.bind(this);
+        
     }
     loadMore(){
         this.setState({skip: this.state.skip + this.state.perPage, inPage: this.state.inPage + this.state.perPage}, function () {
-            this.props.moreUsers(this.state.skip , this.state.perPage);
+            this.props.moreClients(this.state.skip , this.state.perPage);
         });
     }
     handleSearch(e) {
         this.setState({ searchterm: e.target.value.replace(/(<([^>]+)>)/ig,"")}, function(){
             if(this.state.searchterm){
-                this.props.searchUser(this.state.searchterm);
+                this.props.searchClient(this.state.searchterm);
             }else{
-                this.props.fetchUsers(this.state.skip , this.state.perPage);
+                this.props.fetchClients(this.state.skip , this.state.perPage);
             }
         });
     }
-    addUser(){
-        const user = {
-            user_id: "",
-            username: "",
-            email: "",
-            group: {
-                id: ""
-            },
+    addClient=()=>{
+        const client = {
+            customer_id: "",
+            customer_name: "",
+            status: "",
+            updated_user_id: "",
             type: "add"
         }
-        this.props.handleModal(user);
+        this.props.handleCustomerModal(client);
     }
     componentDidMount(){
-        this.props.fetchUsers(this.state.skip , this.state.perPage);
-        this.props.fetchGroups();
+        this.props.fetchClients(this.state.skip , this.state.perPage);
         window.scrollTo(0, 0);
     }
     static getDerivedStateFromProps(props, state) {
-        if(props.userupdates && props.userupdates !== state.userupdates){
+        if(props.clientupdates && props.clientupdates !== state.clientupdates){
             window.scrollTo(0, 0);
-            if(props.userupdates.code === 200){
-                props.fetchUsers(state.skip , state.perPage);
+            if(props.clientupdates.code === 200){
+                props.fetchClients(state.skip , state.perPage);
                 return{
-                    msgContent: props.userupdates.message,
+                    msgContent: props.clientupdates.message,
                     msgType: 'alert success',
-                    userupdates: props.userupdates,
+                    clientupdates: props.clientupdates,
                     loading: false
                 }
             }else{
                 return{
-                    msgContent: props.userupdates.error,
+                    msgContent: props.clientupdates.error,
                     msgType: 'alert error',
-                    userupdates: props.userupdates,
+                    clientupdates: props.clientupdates,
                     loading: false
                 }
             }
@@ -77,8 +74,8 @@ class Clients extends Component {
         }
   }
     render() {
-        const users = this.props.users;
-        let loadMore = users.length === this.state.inPage;
+        const clients = this.props.clients;
+        let loadMore = clients.length >= this.state.inPage;
         return (
             <div className="list-page">
                 {this.state.msgContent &&
@@ -92,7 +89,7 @@ class Clients extends Component {
                             <div className="card-header">
                                 <i className="fa fa-align-justify"></i> Customers List
                                 <div className="card-actions">
-                                    <button className="btn btn-success" onClick={this.addUser}>
+                                    <button className="btn btn-success" onClick={this.addClient}>
                                         <i className="fa fa-user-plus"></i> Add Customer
                                     </button>
                                 </div>
@@ -114,7 +111,7 @@ class Clients extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <ClientsList users={users}/>
+                                <ClientsList clients={clients}/>
                             </div>
                             {loadMore &&
                             <div className="card-footer">
@@ -124,7 +121,7 @@ class Clients extends Component {
                         </div>
                     </div>
                 </div>
-                <UserModal />
+                <ClientModal />
             </div>
         )
     }
@@ -132,9 +129,9 @@ class Clients extends Component {
                 
 function mapStateToProps(globalState) {
     return {
-        users: globalState.users,
-        userupdates: globalState.userupdates
+        clients: globalState.clients,
+        clientupdates: globalState.clientupdates
     };
 }
 
-export default connect(mapStateToProps, {fetchUsers, moreUsers, fetchGroups, searchUser, handleModal})(Clients);
+export default connect(mapStateToProps, {fetchClients, moreClients,  searchClient, handleCustomerModal})(Clients);

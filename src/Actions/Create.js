@@ -36,7 +36,7 @@ export const addUser = (data) => async (dispatch, getState, api) => {
 // Add new client action
 export const ADD_CLIENT = 'ADD_CLIENT';
 export const addClient = (data) => async (dispatch, getState, api) => {
-    const res = await api.post('/user', data)
+    const res = await api.post('/customer', data)
         .then(function (res) {
             return res;
         })

@@ -14,6 +14,7 @@ import GroupDetails from './Pages/GroupDetails';
 import NotFoundPage from './Pages/NotFound';
 import Clients  from './Pages/Clients';
 import Descriptions from './Pages/Descriptions'
+import Login from './Pages/Login'
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
                     <div className={this.props.leftbar ? 'main' : 'main left-closed'}>
                     <Switch>
                         <Route exact path="/" component={Home} />
+                        <Route exact path="/login" component={Login} />
                         <Route exact path="/users" component={Users} />
                         <Route exact path="/clients" component={Clients} />
                         <Route exact path="/bills" component={Users} />

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Left extends Component{
+    
     render(){
         return(
             <aside className={this.props.leftbar ? 'left-bar open hide-sm' : 'left-bar closed hide-sm'}>
@@ -14,36 +15,46 @@ class Left extends Component{
                                 Dashboard
                             </Link>
                         </li>
+                        {this.props.tabs.indexOf('Users')>=0 &&
                         <li>
                             <Link to="/users">
                                 <i className="fa fa-user"></i>
                                 Users
                             </Link>
                         </li>
+                        }
+                        {this.props.tabs.indexOf('Groups')>=0 &&
                         <li>
                             <Link to="/groups">
                                 <i className="fa fa-users"></i>
                                 Groups
                             </Link>
                         </li>
+                        }
+                        {this.props.tabs.indexOf('Clients')>=0 &&
                         <li>
                             <Link to="/clients">
-                            <i class="far fa-address-book"></i>
+                            <i className="far fa-address-book"></i>
                                  Customers Info
                             </Link>
                         </li>
+                        }
+                        {this.props.tabs.indexOf('Bills')>=0 &&
                         <li>
                             <Link to="/bills">
-                            <i class="far fa-money-bill-alt"></i>
+                            <i className="far fa-money-bill-alt"></i>
                                  Bills Info
                             </Link>
                         </li>
+                        }
+                        {this.props.tabs.indexOf('Description')>=0 &&
                         <li>
                             <Link to="/description">
                             <i className="fas fa-info"></i>
                                  Description
                             </Link>
                         </li>
+                        }
                     </ul>
                 </div>
             </aside>

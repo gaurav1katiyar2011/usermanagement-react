@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {  Router, Route, Switch,Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Components
 import Header from './Components/Header';
 import Left from './Components/Left';
+import {PrivateRoute} from './Components/PrivateRoute';
 
 // Pages
 import Home from './Pages/Home';
@@ -15,36 +16,29 @@ import NotFoundPage from './Pages/NotFound';
 import Clients  from './Pages/Clients';
 import Descriptions from './Pages/Descriptions'
 import Login from './Pages/Login'
+import history from './Helper/history'
+import MainPage from './MainPage'
+
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
             <div>
-                <Header />
-                <div className="app-body">
-                    <Left />
-                    <div className={this.props.leftbar ? 'main' : 'main left-closed'}>
                     <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/users" component={Users} />
-                        <Route exact path="/clients" component={Clients} />
-                        <Route exact path="/bills" component={Users} />
-                        <Route exact path="/groups" component={Groups} />
-                        <Route exact path="/group/:groupid" component={GroupDetails} />
-                        <Route exact path="/description" component={Descriptions} />
-                        <Route component={NotFoundPage} />
+                        <PrivateRoute  path="/" component={MainPage} />
+                        <PrivateRoute exact path="/login" component={Login} />
+                        <Route path="/logout" render={() => {
+                                localStorage.removeItem('user');
+                                return (<Redirect to="/login" />);}}
+                            />
+                        <PrivateRoute component={NotFoundPage} />
                     </Switch>
-                    </div>
-                </div>
-            </div>
+               </div>
         </Router>
     );
   }
 }
-
-
 function mapStateToProps(globalState) {
     return {
         leftbar: globalState.leftbar

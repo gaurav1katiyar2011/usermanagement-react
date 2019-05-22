@@ -1,3 +1,4 @@
+import history from '../Helper/history'
 //open/close left bar
 export const HANDLE_LEFT = 'HANDLE_LEFT';
 export const handleLeft = (value) => async (dispatch) => {
@@ -42,3 +43,21 @@ export const contentStats = () => async (dispatch, getState, api) => {
         payload: res.data
     });
 };
+
+export const HANDLE_LOGIN='HANDLE_LOGIN';
+export const handleLoginSubmit = (credentials)=> async (dispatch,getState,api) => {
+    const res= await api.post('/auth',credentials)
+    .then(res=>{
+        localStorage.setItem('user',JSON.stringify(res.data));
+        dispatch({
+        type: HANDLE_LOGIN,
+        payload: res.data
+     })
+     history.push('/')
+    })
+    
+    .catch(err=>{
+        console.log("error while login",err)
+    })
+    
+}

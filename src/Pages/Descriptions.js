@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import DescriptionDetail from '../Components/DescriptionDetail'
-export default class Descriptions extends Component {
-    constructor(props){
-        super(props);
-        
-    }
-    
+export default class Descriptions extends Component {    
     render() {
         return (
             <div className="list-page">

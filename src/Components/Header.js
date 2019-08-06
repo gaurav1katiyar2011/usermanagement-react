@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {handleLeft} from '../Actions/Global'
+import {Link} from 'react-router-dom';
 
 class Header extends Component{
     constructor(props){
@@ -12,11 +13,22 @@ class Header extends Component{
     }
     render(){
         return(
-            <header>
+            <header >
                 <div className="brand-w-button">
                         <img className="brand" alt="logotype" src="/images/logo1.png" />
                         <i className="fa fa-bars" onClick={this.handleBar}></i>
                 </div>
+                <nav className="user-nav">
+                    <div className="user-nav__user">
+                        <span className="user-nav__user-name">Gaurav</span>
+                    </div>
+                    <div className="user-nav__user">
+                        <Link to="/logout">
+                            <div className="user-nav__logout">Logout</div>
+                        </Link>
+                    </div>
+                </nav>
+                
             </header>
         )
     }

@@ -2,7 +2,7 @@ header{
     position: fixed;
     z-index: 1020;
     width: 100%;
-    flex-direction: row;
+    display: flex;
     height: 3.667rem;
     top: 0;
     background-color: #fff;
@@ -20,5 +20,43 @@ header{
             font-size: 1.2rem;
             text-align: center;
         }
+    }
+}
+.user-nav{
+    flex:0 0 85%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #536c79 !important;
+    & > *{
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+    }
+    &>*:hover{
+    }
+    &__icon-box{
+
+    }
+    &__icon{
+        height: 2.5rem;
+        width: 2.5rem;
+
+    }
+    &__notification{
+
+    }
+    &__user{
+        cursor: pointer;
+    }
+    &__user-photo{
+        border-radius: 50%;
+    }
+    &__user-name{
+
+    }
+    &__logout{
+        color: #536c79 !important;
     }
 }

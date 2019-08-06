@@ -3,18 +3,11 @@ import {  Router, Route, Switch,Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Components
-import Header from './Components/Header';
-import Left from './Components/Left';
 import {PrivateRoute} from './Components/PrivateRoute';
 
 // Pages
-import Home from './Pages/Home';
-import Users from './Pages/Users';
-import Groups from './Pages/Groups';
-import GroupDetails from './Pages/GroupDetails';
+
 import NotFoundPage from './Pages/NotFound';
-import Clients  from './Pages/Clients';
-import Descriptions from './Pages/Descriptions'
 import Login from './Pages/Login'
 import history from './Helper/history'
 import MainPage from './MainPage'

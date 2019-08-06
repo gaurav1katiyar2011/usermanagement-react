@@ -46,7 +46,7 @@ export const contentStats = () => async (dispatch, getState, api) => {
 
 export const HANDLE_LOGIN='HANDLE_LOGIN';
 export const handleLoginSubmit = (credentials)=> async (dispatch,getState,api) => {
-    const res= await api.post('/auth',credentials)
+   await api.post('/auth',credentials)
     .then(res=>{
         localStorage.setItem('user',JSON.stringify(res.data));
         dispatch({

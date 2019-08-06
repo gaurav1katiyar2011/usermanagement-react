@@ -10,7 +10,6 @@ class Login extends Component{
             password:''
         }
     }
-
     handleChange= e=>{
         const {name,value}=e.target;
         this.setState({[name]:value})
@@ -21,27 +20,47 @@ class Login extends Component{
     }
     render(){
         return (
-            <div className="login">
-                <div className="login-container">
-                    <div className="logo">Agent Login</div>
-                    <div className="login-item">
-                    <form action="" method="post" onSubmit={(e)=>{this.handleSubmit(e)}} className="form form-login">
-                        <div className="form-field">
-                            <label className="user"  htmlFor="login-username"><i className="fas fa-user"></i><span className="hidden">Username</span></label>
-                            <input id="login-username"  value={this.state.userId} onChange={this.handleChange} name="userId" type="text" className="form-input" placeholder="Username" required />
+            <div className="login-page">
+                <div className="login">
+                    <div className="login__items">
+                        <div className="logo" >
+                            <img src="images/logo1.png" alt="logo" className="logo__img" />
                         </div>
-
-                        <div className="form-field">
-                            <label className="lock" htmlFor="login-password"><i className="fas fa-lock"></i><span className="hidden">Password</span></label>
-                            <input id="login-password" type="password" value={this.state.password} onChange={this.handleChange} name="password" className="form-input" placeholder="Password" required />
+                        <div className="login-text">
+                            <h1> SignIn</h1>
                         </div>
-
-                        <div className="form-field">
-                            <input type="submit" value="Log in" />
-                        </div>
-                    </form>
+                        <form action="#"  onSubmit={this.handleSubmit} className="form">
+                            <div className="form-group">
+                                <div className="input-group-text1">User Id</div>
+                                <div className="input-group">    
+                                    <input 
+                                        onChange={this.handleChange} 
+                                        value={this.state.userId} 
+                                        name="userId" 
+                                        className="form-control form-control-lg" 
+                                        placeholder="User Id" 
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="input-group-text1">Password</div>
+                                <div className="input-group">
+                                    
+                                    <input 
+                                        onChange={this.handleChange} 
+                                        value={this.state.password} 
+                                        name="password" 
+                                        className="form-control form-control-lg" 
+                                        placeholder="Password" 
+                                        type="text" />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <button type="submit" className="btn btn-success"><i className="far fa-dot-circle"></i> Submit</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
+                </div>    
             </div>
         )
     }

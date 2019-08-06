@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-
-
-
 export default class DescriptionDetail extends Component{
     render(){
         return(
             <React.Fragment>
             <h1>設定方法</h1>
-
             <hr/>
             <h2>自動アップロード実施時刻</h2>
             ①20:00に共有サーバからCDRダウンロードサイトへアップロード<br />
@@ -42,7 +38,6 @@ export default class DescriptionDetail extends Component{
             <br />
             上記３に当てはまらない場合は、「未設定」で登録する<br />
             <br />
-            
             <hr/>
             <h2>自動アップロードの準備</h2>
             WinSCPのインストール<br />
@@ -78,21 +73,22 @@ export default class DescriptionDetail extends Component{
             ②自動アップロード（毎日1回午後20時30分に実行）<br />
             ③アップロード対象フォルダからアップロード済みフォルダへ移動（毎日1回午後21時に実行）<br />
             <br />
-            <img src="./images/task01.jpg" alt="task 1 image" /><br />
+            
+            <Img src="./images/task01.jpg" alt="task 1 image" /><br />
             <br />
-            <img src="./images/task02.jpg" alt="task 2 image" /><br />
+            <Img src="./images/task02.jpg" alt="task 2 image" /><br />
             <br />
-            <img src="./images/task02-1.jpg" alt="task 2.1 image" /><br />
+            <Img src="./images/task02-1.jpg" alt="task 2.1 image" /><br />
             <br />
-            <img src="./images/task03.jpg" alt="task 3 image" /><br />
+            <Img src="./images/task03.jpg" alt="task 3 image" /><br />
             <br />
-            <img src="./images/task03-1.jpg" alt="task 3.1 image" /><br />
+            <Img src="./images/task03-1.jpg" alt="task 3.1 image" /><br />
             <br />
-            <img src="./images/task04.jpg" alt="task 4 image" /><br />
+            <Img src="./images/task04.jpg" alt="task 4 image" /><br />
             <br />
-            <img src="./images/task05.jpg" alt="task 5 image" /><br />
+            <Img src="./images/task05.jpg" alt="task 5 image" /><br />
             <br />
-            <img src="./images/task06.jpg" alt="task 6 image" /><br />
+            <Img src="./images/task06.jpg" alt="task 6 image" /><br />
             <br />
             
             <hr/>
@@ -116,4 +112,12 @@ export default class DescriptionDetail extends Component{
             
         )
     }
+}
+
+
+
+ const  Img=(props)=>{
+ return (
+    <img src={props.src} alt={props.alt }/>
+ )   
 }

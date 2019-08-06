@@ -12,9 +12,10 @@ import bills from './Bills';
 import billupdates from './BillUpdates';
 import leftbar from './LeftBar';
 import home from './Home';
+import loginuser from './Login'
 
 export default combineReducers({
-    
+    loginuser,
     users,
     userupdates,
     usermodal,
